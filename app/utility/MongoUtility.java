@@ -4,6 +4,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoDatabase;
 import play.Logger;
+import play.Play;
 import play.api.db.DB;
 
 /**
@@ -16,8 +17,8 @@ public class MongoUtility {
     public static MongoDatabase initDb() {
         if (mongoClient == null) {
             try {
-                String localHostName = play.Configuration.root().getString("mongo.local.hostname");
-                Integer localPortNum = play.Configuration.root().getInt("mongo.local.port");
+                String localHostName = Play.application().configuration().getString("mongo.local.hostname");
+                Integer localPortNum = Play.application().configuration().getInt("mongo.local.port");
                 mongoClient = new MongoClient(localHostName, localPortNum);
             } catch (MongoException e) {
                 e.printStackTrace();
@@ -26,8 +27,9 @@ public class MongoUtility {
                     mongoClient.close();
                 }
             }
-        } else {
-            db = mongoClient.getDatabase("playexample");
+        }
+        if(mongoClient != null) {
+            db = mongoClient.getDatabase("play");
         }
         return db;
     }
