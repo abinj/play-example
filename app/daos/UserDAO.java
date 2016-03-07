@@ -63,4 +63,15 @@ public class UserDAO {
         }
         return false;
     }
+
+//    public static Map<String, Object> signInUser(JsonNode json) {
+//        Gson gson = new Gson();
+//        Map<String, Object> signInResponse = new HashMap<String, Object>();
+//
+//        String jsonString = json.toString();
+//        Document document = gson.fromJson(jsonString, Document.class);
+//        MongoCollection<Document> userCollection = db.getCollection(DbConstants.COLLECTION_USERS);
+//        BasicDBObject query = new BasicDBObject(DbConstants.EMAIL_KEY, document.get(DbConstants.EMAIL_KEY));
+//
+//    }
 }

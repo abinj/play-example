@@ -37,9 +37,14 @@ public class UserApplication extends Controller {
         return Results.ok(responseJson);
     }
 
-//    public static Result signin() throws JsonProcessingException {
-//
-//    }
+    public static Result signin() throws JsonProcessingException {
+        Map<String, Object> signInResponse = new HashMap<String, Object>();
+
+        JsonNode json = request().body().asJson();
+        signInResponse = UserDAO.signInUser(json);
+        JsonNode responseJson = Json.toJson(signInResponse);
+        return Results.ok(responseJson);
+    }
 
 
 }
