@@ -13,4 +13,5 @@ public class StatusConstants {
     //sign up
     public static final String SIGN_UP_SUCCESS = "Successfully signed up";
     public static final String SIGN_UP_FAILED = "Failed to sign up";
+    public static final String USER_ALREADY_EXIST = "User already exist";
 }
